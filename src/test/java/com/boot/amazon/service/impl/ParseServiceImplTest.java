@@ -12,9 +12,9 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParseServiceImplTest {
-    private static final String PATH = "src/file.storage/file.csv";
+    private static final String PATH = "file.csv";
     private static File file;
-    ParseService parseService;
+    private ParseService parseService;
 
     @BeforeEach
     void init() throws IOException {

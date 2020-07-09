@@ -9,7 +9,7 @@ import java.nio.channels.ReadableByteChannel;
 
 public class FileServiceImpl implements FileService {
     @Override
-    public void loadFileByUrl(String loadFromUrl, String saveToPath) throws IOException {
+    public void saveFileFromUrl(String loadFromUrl, String saveToPath) throws IOException {
         URL url = new URL(loadFromUrl);
         ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
         FileOutputStream fileOutputStream = new FileOutputStream(saveToPath);
