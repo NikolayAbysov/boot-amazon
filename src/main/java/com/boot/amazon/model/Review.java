@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -17,7 +18,7 @@ public class Review {
     private int score;
     private User user;
     private Long productId;
-    private Long time;
+    private LocalDateTime time;
     private int HelpfulnessNumerator;
     private int HelpfulnessDenominator;
 }
