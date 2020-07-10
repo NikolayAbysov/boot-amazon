@@ -22,7 +22,7 @@ class ParseServiceImplTest {
         file = new File(PATH);
         String str = "Id,ProductId,UserId,ProfileName,HelpfulnessNumerator,"
                 + "HelpfulnessDenominator,Score,Time,Summary,Text\n"
-                + "1,1,1,1,1,1,5,1,"
+                + "1,1,1,1,1,1,5,1303862400,"
                 + "1,1 ";
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         writer.write(str);

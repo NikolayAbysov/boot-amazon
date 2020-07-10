@@ -1,4 +1,8 @@
 package com.boot.amazon.repository;
 
-public interface UserRepository {
+import com.boot.amazon.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByProfileName(String profileName);
 }

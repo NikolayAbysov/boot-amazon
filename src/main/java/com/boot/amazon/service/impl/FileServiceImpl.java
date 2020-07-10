@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FileServiceImpl implements FileService {
     @Override
     public void saveFileFromUrl(String loadFromUrl, String saveToPath) throws IOException {

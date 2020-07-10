@@ -1,11 +1,11 @@
 package com.boot.amazon.model;
 
-import lombok.Data;
-
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import lombok.Data;
 
 @Data
 @Entity
@@ -16,9 +16,9 @@ public class Review {
     private String summary;
     private String text;
     private int score;
+    @OneToOne
     private User user;
-    private Long productId;
-    private LocalDateTime time;
-    private int HelpfulnessNumerator;
-    private int HelpfulnessDenominator;
+    @OneToOne
+    private Product product;
+    private LocalDate time;
 }
