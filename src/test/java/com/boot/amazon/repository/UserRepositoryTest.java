@@ -14,9 +14,9 @@ class UserRepositoryTest {
     private User user;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @BeforeEach
     void init() {
