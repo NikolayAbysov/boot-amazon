@@ -2,8 +2,8 @@ package com.boot.amazon.controller;
 
 import com.boot.amazon.model.Role;
 import com.boot.amazon.service.RoleService;
-import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 
 @Component
 public class InjectDataController {

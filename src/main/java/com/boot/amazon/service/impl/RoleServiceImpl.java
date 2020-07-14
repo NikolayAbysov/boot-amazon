@@ -3,9 +3,8 @@ package com.boot.amazon.service.impl;
 import com.boot.amazon.model.Role;
 import com.boot.amazon.repository.RoleRepository;
 import com.boot.amazon.service.RoleService;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RoleServiceImpl implements RoleService {

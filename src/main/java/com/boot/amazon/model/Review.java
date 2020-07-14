@@ -1,6 +1,7 @@
 package com.boot.amazon.model;
 
 import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -14,6 +15,7 @@ public class Review {
     @Id
     private Long id;
     private String summary;
+    @Column(columnDefinition = "TEXT")
     private String text;
     private int score;
     @OneToOne
