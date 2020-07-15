@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<String> getTopThousandMostActiveUsers() {
-        return userRepository.getTopThousandMostActiveUsers();
+    public List<String> getTopMostActiveUsers(int amount) {
+        return userRepository.getTopMostActiveUsers(amount);
     }
 }

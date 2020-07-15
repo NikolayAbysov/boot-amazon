@@ -11,5 +11,5 @@ public interface ProductSevice {
 
     Optional<Product> findByproductIdFromSource(String productIdFromSource);
 
-    List<String> getTopThousand();
+    List<String> getTop(int amount);
 }

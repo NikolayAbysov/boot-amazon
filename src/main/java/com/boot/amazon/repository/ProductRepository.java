@@ -15,6 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             + "               left join product p on review.product_id = p.id "
             + "      group by product_id_from_source "
             + "      order by s desc "
-            + "      limit 1000) as pifss", nativeQuery = true)
-    List<String> getTopThousandMostCommentedProducts();
+            + "      limit ?1) as pifss", nativeQuery = true)
+    List<String> getTopMostCommentedProducts(int amount);
 }

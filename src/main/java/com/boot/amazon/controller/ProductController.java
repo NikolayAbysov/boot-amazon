@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final ProductSevice productSevice;
     private final ProductMapper productMapper;
+    private static final int PRODUCTS_AMOUNT = 1000;
 
     public ProductController(ProductSevice productSevice, ProductMapper productMapper) {
         this.productSevice = productSevice;
@@ -19,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping("/top-thousand-most-commented")
-    public ProductGetRequestDto getThousandTopCommentedItems() {
-        return productMapper.map(productSevice.getTopThousand());
+    public ProductGetRequestDto getTopCommentedItems() {
+        return productMapper.map(productSevice.getTop(PRODUCTS_AMOUNT));
     }
 }

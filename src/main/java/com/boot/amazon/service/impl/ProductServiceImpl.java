@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductSevice {
     }
 
     @Override
-    public List<String> getTopThousand() {
-        return productRepository.getTopThousandMostCommentedProducts();
+    public List<String> getTop(int amount) {
+        return productRepository.getTopMostCommentedProducts(amount);
     }
 }

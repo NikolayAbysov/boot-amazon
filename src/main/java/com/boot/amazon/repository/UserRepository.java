@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             + "           left join review on \"user\".id = review.user_id "
             + "      group by  \"user\".profile_name "
             + "      order by s desc "
-            + "      limit 1000) as pns", nativeQuery = true)
-    List<String> getTopThousandMostActiveUsers();
+            + "      limit ?1) as pns", nativeQuery = true)
+    List<String> getTopMostActiveUsers(int amount);
 }

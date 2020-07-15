@@ -11,5 +11,5 @@ public interface UserService {
 
     Optional<User> findByProfileName(String profileName);
 
-    List<String> getTopThousandMostActiveUsers();
+    List<String> getTopMostActiveUsers(int amount);
 }

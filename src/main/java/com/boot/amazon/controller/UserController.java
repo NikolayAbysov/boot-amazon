@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
+    private static final int USERS_AMOUNT = 1000;
 
     public UserController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
@@ -19,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/top-thousand-active-users")
-    public UserGetRequestDto getTopThousandActiveUsers() {
-        return userMapper.map(userService.getTopThousandMostActiveUsers());
+    public UserGetRequestDto getTopActiveUsers() {
+        return userMapper.map(userService.getTopMostActiveUsers(USERS_AMOUNT));
     }
 }
