@@ -1,4 +1,6 @@
 language: java
+services:
+  - postgresql
 jdk:
   - openjdk11
 before_install:
