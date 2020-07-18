@@ -35,7 +35,7 @@ class ReviewRepositoryTest {
         user.setProfileName("Shion");
         user.setRoles(Set.of(role));
         Product product = new Product();
-        product.setProductIdFromSource("R1E3");
+        product.setProductIdFromSource("R1E4");
         review = new Review();
         review.setTime(LocalDate.now());
         review.setProduct(productRepository.save(product));
