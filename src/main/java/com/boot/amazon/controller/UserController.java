@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    private static final int USERS_AMOUNT = 1000;
     private final UserService userService;
     private final UserMapper userMapper;
-    private static final int USERS_AMOUNT = 1000;
 
     public UserController(UserService userService, UserMapper userMapper) {
         this.userService = userService;

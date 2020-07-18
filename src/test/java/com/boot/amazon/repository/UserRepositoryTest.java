@@ -31,7 +31,7 @@ class UserRepositoryTest {
     @Test
     void saveUserOk() {
         user = userRepository.save(user);
-        assertEquals(userRepository.findByProfileName(user.getProfileName()),
+        assertEquals(userRepository.findByProfileName(user.getProfileName()).get(),
                 user, "Users should be equal");
     }
 }
