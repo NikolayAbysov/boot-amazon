@@ -31,12 +31,12 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<String> getTopThousandMostFrequentWordsInReview() {
-        Map<String, Integer> wordsMap = getWordsMap();
+    public List<String> getTopMostFrequentWordsInReview(int limit) {
+        Map<String, Integer> wordsMap = getWordsMap(limit);
         return new ArrayList<>(wordsMap.keySet());
     }
 
-    private Map<String, Integer> getWordsMap() {
+    private Map<String, Integer> getWordsMap(int limit) {
         List<String> textFromReview = reviewRepository.getTextFromReview();
         Map<String, Integer> wordCount = new HashMap<>();
 
@@ -53,7 +53,7 @@ public class ReviewServiceImpl implements ReviewService {
         return wordCount.entrySet()
                 .stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-                .limit(1000)
+                .limit(limit)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (e1, e2) -> e1, LinkedHashMap::new));
     }

@@ -6,6 +6,7 @@ import com.boot.amazon.service.ReviewService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,9 +20,9 @@ public class ReviewController {
         this.reviewMapper = reviewMapper;
     }
 
-    @GetMapping("/top-thousand-words")
-    public ReviewRequestDto getWords() {
-        List<String> words = reviewService.getTopThousandMostFrequentWordsInReview();
+    @GetMapping("/top-words")
+    public ReviewRequestDto getWords(@RequestParam(defaultValue = "1000") int limit) {
+        List<String> words = reviewService.getTopMostFrequentWordsInReview(limit);
         return reviewMapper.map(words);
     }
 }

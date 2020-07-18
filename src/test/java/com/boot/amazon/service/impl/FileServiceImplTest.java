@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileServiceImplTest {
     private static final String LOAD_FROM_URL =
             "https://spring-boot-aws-revievers.s3.eu-central-1.amazonaws.com/Reviews.csv";
-    private static final String SAVE_TO_PATH = "file.csv";
+    private static final String SAVE_TO_PATH = "file-test.csv";
     private static FileService fileService;
     private static File file;
 
