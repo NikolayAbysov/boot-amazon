@@ -8,9 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReviewRepositoryTest {
     private Review review;
     @Autowired
-    ReviewRepository reviewRepository;
+    private ReviewRepository reviewRepository;
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @BeforeEach
     void init() {

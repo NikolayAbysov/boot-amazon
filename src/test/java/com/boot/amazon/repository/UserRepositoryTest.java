@@ -14,9 +14,9 @@ class UserRepositoryTest {
     private User user;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @BeforeEach
     void init() {
@@ -31,7 +31,7 @@ class UserRepositoryTest {
     @Test
     void saveUserOk() {
         user = userRepository.save(user);
-        assertEquals(userRepository.findByProfileName(user.getProfileName()),
+        assertEquals(userRepository.findByProfileName(user.getProfileName()).get(),
                 user, "Users should be equal");
     }
 }

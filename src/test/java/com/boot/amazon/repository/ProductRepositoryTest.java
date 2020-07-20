@@ -12,7 +12,7 @@ class ProductRepositoryTest {
     private Product product;
 
     @Autowired
-     ProductRepository productRepository;
+     private ProductRepository productRepository;
 
     @BeforeEach
     void init() {

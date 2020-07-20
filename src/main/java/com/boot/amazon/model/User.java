@@ -1,5 +1,6 @@
 package com.boot.amazon.model;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,4 +21,8 @@ public class User {
     private String profileName;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+
+    public User() {
+        this.roles = new HashSet<>();
+    }
 }
