@@ -21,7 +21,8 @@ public class ProductController {
     }
 
     @GetMapping("/top-most-commented")
-    public ProductGetRequestDto getTopCommentedItems(@RequestParam(defaultValue = "1000") int limit) {
+    public ProductGetRequestDto getTopCommentedItems(
+            @RequestParam(defaultValue = "1000") int limit) {
         return productMapper.map(productSevice.getTop(limit));
     }
 }
