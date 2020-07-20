@@ -5,6 +5,7 @@ import com.boot.amazon.mapper.UserMapper;
 import com.boot.amazon.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +20,8 @@ public class UserController {
         this.userMapper = userMapper;
     }
 
-    @GetMapping("/top-thousand-active-users")
-    public UserGetRequestDto getTopActiveUsers() {
-        return userMapper.map(userService.getTopMostActiveUsers(USERS_AMOUNT));
+    @GetMapping("/top-active-users")
+    public UserGetRequestDto getTopActiveUsers(@RequestParam(defaultValue = "1000") int limit) {
+        return userMapper.map(userService.getTopMostActiveUsers(limit));
     }
 }

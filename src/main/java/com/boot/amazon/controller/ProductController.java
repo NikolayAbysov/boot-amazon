@@ -5,6 +5,7 @@ import com.boot.amazon.mapper.ProductMapper;
 import com.boot.amazon.service.ProductSevice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +20,8 @@ public class ProductController {
         this.productMapper = productMapper;
     }
 
-    @GetMapping("/top-thousand-most-commented")
-    public ProductGetRequestDto getTopCommentedItems() {
-        return productMapper.map(productSevice.getTop(PRODUCTS_AMOUNT));
+    @GetMapping("/top-most-commented")
+    public ProductGetRequestDto getTopCommentedItems(@RequestParam(defaultValue = "1000") int limit) {
+        return productMapper.map(productSevice.getTop(limit));
     }
 }

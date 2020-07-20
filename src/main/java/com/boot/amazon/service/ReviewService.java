@@ -9,5 +9,5 @@ public interface ReviewService {
 
     void saveAll(Set<Review> reviews);
 
-    List<String> getTopThousandMostFrequentWordsInReview();
+    List<String> getTopMostFrequentWordsInReview(int limit);
 }
