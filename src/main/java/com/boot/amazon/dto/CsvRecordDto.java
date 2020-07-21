@@ -7,7 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CsvRecordDto extends AbstractRecordDto {
-    private Long id;
     private String productId;
     private String userId;
     private String profileName;

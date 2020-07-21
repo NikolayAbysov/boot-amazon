@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    private static final int PRODUCTS_AMOUNT = 1000;
     private final ProductSevice productSevice;
     private final ProductMapper productMapper;
 

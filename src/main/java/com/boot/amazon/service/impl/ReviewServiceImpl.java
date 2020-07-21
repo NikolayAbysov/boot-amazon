@@ -31,6 +31,16 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public void deleteById(Long id) {
+        reviewRepository.deleteById(id);
+    }
+
+    @Override
+    public Review getById(Long id) {
+        return reviewRepository.getById(id);
+    }
+
+    @Override
     public List<String> getTopMostFrequentWordsInReview(int limit) {
         Map<String, Integer> wordsMap = getWordsMap(limit);
         return new ArrayList<>(wordsMap.keySet());

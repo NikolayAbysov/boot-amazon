@@ -3,11 +3,11 @@ package com.boot.amazon.security;
 import com.boot.amazon.model.Role;
 import com.boot.amazon.model.User;
 import com.boot.amazon.service.UserService;
+import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
