@@ -5,7 +5,6 @@ import com.boot.amazon.dto.UserGetRequestDto;
 import com.boot.amazon.dto.UserRequestChangePasswordDto;
 import com.boot.amazon.model.User;
 import com.boot.amazon.service.RoleService;
-import com.boot.amazon.service.UserService;
 import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -13,13 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
     private final RoleService roleService;
-    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    public UserMapper(RoleService roleService, UserService userService,
+    public UserMapper(RoleService roleService,
                       PasswordEncoder passwordEncoder) {
         this.roleService = roleService;
-        this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -30,8 +27,7 @@ public class UserMapper {
         return user;
     }
 
-    public User map(UserRequestChangePasswordDto dto) {
-        User user = userService.findByProfileName(dto.getProfileName()).get();
+    public User map(UserRequestChangePasswordDto dto, User user) {
         user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
         return user;
     }

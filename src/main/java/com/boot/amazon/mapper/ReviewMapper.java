@@ -7,19 +7,12 @@ import com.boot.amazon.dto.ReviewRequestDto;
 import com.boot.amazon.model.Product;
 import com.boot.amazon.model.Review;
 import com.boot.amazon.model.User;
-import com.boot.amazon.service.ReviewService;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ReviewMapper {
-
-    private final ReviewService reviewService;
-
-    public ReviewMapper(ReviewService reviewService) {
-        this.reviewService = reviewService;
-    }
 
     public Review map(CsvRecordDto csvRecordDto, User user, Product product) {
         Review review = new Review();
@@ -43,8 +36,7 @@ public class ReviewMapper {
         return review;
     }
 
-    public Review map(ReviewRequestChangeDto dto) {
-        Review review = reviewService.getById(dto.getId());
+    public Review map(ReviewRequestChangeDto dto, Review review) {
         review.setSummary(dto.getSummary());
         review.setText(dto.getText());
         review.setScore(dto.getScore());

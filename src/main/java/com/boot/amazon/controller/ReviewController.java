@@ -14,14 +14,16 @@ import com.boot.amazon.service.UserService;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/review")
+@RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewMapper reviewMapper;
@@ -43,12 +45,12 @@ public class ReviewController {
         return reviewMapper.map(words);
     }
 
-    @DeleteMapping("/admin/delete")
-    public void deleteReview(@RequestParam Long reviewId) {
+    @DeleteMapping("/admin")
+    public void deleteReview(@PathVariable Long reviewId) {
         reviewService.deleteById(reviewId);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public void addReview(@RequestBody ReviewRequestAddDto requestAddDto) {
         User user = userService.findByProfileName(requestAddDto.getProfileName()).orElseThrow();
         Product product = productSevice
@@ -56,9 +58,11 @@ public class ReviewController {
         reviewService.save(reviewMapper.map(requestAddDto, user, product));
     }
 
-    @PostMapping("/change")
-    public void changeReview(@RequestBody ReviewRequestChangeDto requestChangeDto) {
-        Review review = reviewMapper.map(requestChangeDto);
+    @PutMapping("/{reviewId}")
+    public void changeReview(@RequestBody ReviewRequestChangeDto requestChangeDto,
+                             @PathVariable String reviewId) {
+        Review review = reviewService.getById(Long.parseLong(reviewId));
+        review = reviewMapper.map(requestChangeDto, review);
         if (!requestChangeDto.getProfileName().equals(review.getUser().getProfileName())) {
             throw new NoReviewException("Review not found by Id");
         }

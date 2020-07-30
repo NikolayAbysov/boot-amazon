@@ -6,7 +6,8 @@ import com.boot.amazon.mapper.UserMapper;
 import com.boot.amazon.model.User;
 import com.boot.amazon.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,9 +29,11 @@ public class UserController {
         return userMapper.map(userService.getTopMostActiveUsers(limit));
     }
 
-    @PostMapping("/admin/change-user-password")
-    public void changeUserPassword(@RequestBody UserRequestChangePasswordDto dto) {
-        User user = userMapper.map(dto);
+    @PutMapping("/admin/change-user-password/{userName}")
+    public void changeUserPassword(@RequestBody UserRequestChangePasswordDto dto,
+                                   @PathVariable String userName) {
+        User user = userService.findByProfileName(userName).get();
+        user = userMapper.map(dto, user);
         userService.save(user);
     }
 }
