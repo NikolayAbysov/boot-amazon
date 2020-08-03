@@ -1,7 +1,6 @@
 package com.boot.amazon.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,15 +21,19 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    @Autowired
-    private UserDetailsService jwtUserDetailsService;
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final UserDetailsService jwtUserDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;
+
+    public WebSecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
+                             UserDetailsService jwtUserDetailsService,
+                             JwtRequestFilter jwtRequestFilter) {
+        this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
+        this.jwtUserDetailsService = jwtUserDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
 
     @Autowired
-
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(getEncoder());
     }
@@ -40,14 +43,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/authenticate").permitAll()
-                .antMatchers(HttpMethod.GET, "/file/**", "/user/admin/**", "/review/admin/**")
+                .antMatchers(HttpMethod.GET, "/file/**", "/reviews/**", "/users/**", "/products/**")
                 .hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/file/**", "/user/admin/**", "/review/admin/**")
-                .hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/review/admin/**")
-                .hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/review/**")
+                .antMatchers(HttpMethod.POST, "/reviews")
                 .hasRole("USER")
+                .antMatchers(HttpMethod.DELETE, "/reviews/admin/**")
+                .hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/reviews/**", "/users/**")
+                .hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

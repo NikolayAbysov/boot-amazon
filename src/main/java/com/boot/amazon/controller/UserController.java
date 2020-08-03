@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
@@ -29,7 +29,7 @@ public class UserController {
         return userMapper.map(userService.getTopMostActiveUsers(limit));
     }
 
-    @PutMapping("/admin/change-user-password/{userName}")
+    @PutMapping("/admin/{userName}")
     public void changeUserPassword(@RequestBody UserRequestChangePasswordDto dto,
                                    @PathVariable String userName) {
         User user = userService.findByProfileName(userName).get();
