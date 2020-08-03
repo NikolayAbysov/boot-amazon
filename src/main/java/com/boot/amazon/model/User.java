@@ -19,6 +19,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String profileName;
+    private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 

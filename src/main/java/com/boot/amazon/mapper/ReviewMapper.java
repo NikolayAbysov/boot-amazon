@@ -1,10 +1,13 @@
 package com.boot.amazon.mapper;
 
 import com.boot.amazon.dto.CsvRecordDto;
+import com.boot.amazon.dto.ReviewRequestAddDto;
+import com.boot.amazon.dto.ReviewRequestChangeDto;
 import com.boot.amazon.dto.ReviewRequestDto;
 import com.boot.amazon.model.Product;
 import com.boot.amazon.model.Review;
 import com.boot.amazon.model.User;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -13,13 +16,30 @@ public class ReviewMapper {
 
     public Review map(CsvRecordDto csvRecordDto, User user, Product product) {
         Review review = new Review();
-        review.setId(csvRecordDto.getId());
         review.setSummary(csvRecordDto.getSummary());
         review.setText(csvRecordDto.getText());
         review.setScore(csvRecordDto.getScore());
         review.setUser(user);
         review.setProduct(product);
         review.setTime(csvRecordDto.getLocalDate());
+        return review;
+    }
+
+    public Review map(ReviewRequestAddDto dto, User user, Product product) {
+        Review review = new Review();
+        review.setSummary(dto.getSummary());
+        review.setText(dto.getText());
+        review.setScore(dto.getScore());
+        review.setTime(LocalDate.now());
+        review.setUser(user);
+        review.setProduct(product);
+        return review;
+    }
+
+    public Review map(ReviewRequestChangeDto dto, Review review) {
+        review.setSummary(dto.getSummary());
+        review.setText(dto.getText());
+        review.setScore(dto.getScore());
         return review;
     }
 

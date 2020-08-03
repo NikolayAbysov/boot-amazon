@@ -9,4 +9,5 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query(value = "select text from review", nativeQuery = true)
     List<String> getTextFromReview();
 
+    Review getById(Long id);
 }

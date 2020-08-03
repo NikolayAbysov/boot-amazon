@@ -36,7 +36,6 @@ public class ParseServiceImpl implements ParseService {
         CsvRecordDto recordDto;
         for (CSVRecord record : records) {
             recordDto = new CsvRecordDto();
-            recordDto.setId(Long.parseLong(record.get("Id")));
             recordDto.setProductId(record.get("ProductId"));
             recordDto.setUserId(record.get("UserId"));
             recordDto.setProfileName(record.get("ProfileName"));
