@@ -3,8 +3,6 @@ package com.boot.amazon.security;
 import com.boot.amazon.model.Role;
 import com.boot.amazon.model.User;
 import com.boot.amazon.service.UserService;
-
-import java.util.ArrayList;
 import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
